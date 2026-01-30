@@ -3,59 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marco Chiliguano | Especialista en Automatización</title>
+    <title>Marco Chiliguano | Automatización Inteligente</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        body {
-            background-color: #0f172a;
-            color: #f8fafc;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .container {
-            text-align: center;
-            padding: 2rem;
-            border: 1px solid #1e293b;
-            border-radius: 1rem;
-            background: #1e293b;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-        h1 { color: #38bdf8; margin-bottom: 0.5rem; }
-        p { color: #94a3b8; font-size: 1.1rem; }
-        .badge {
-            display: inline-block;
-            background: #0ea5e9;
-            color: white;
-            padding: 0.2rem 0.8rem;
-            border-radius: 9999px;
-            font-size: 0.8rem;
-            margin-top: 1rem;
-        }
-        .btn {
-            display: block;
-            margin-top: 2rem;
-            padding: 0.8rem 1.5rem;
-            background: #22c55e;
-            color: white;
-            text-decoration: none;
-            border-radius: 0.5rem;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        .btn:hover { background: #16a34a; transform: scale(1.05); }
+        :root { --primary: #38bdf8; --success: #22c55e; --dark: #020617; }
+        body { background: radial-gradient(circle at top, #1e293b 0%, #020617 100%); color: white; font-family: 'Inter', sans-serif; margin: 0; line-height: 1.6; }
+        .nav { padding: 1.5rem; text-align: center; font-weight: bold; letter-spacing: 2px; color: var(--primary); }
+        .hero { height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; }
+        h1 { font-size: 3.5rem; margin: 0; background: linear-gradient(to right, #fff, #38bdf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .subtitle { color: #94a3b8; font-size: 1.2rem; max-width: 600px; margin: 1rem 0; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; padding: 4rem 10%; background: rgba(255,255,255,0.02); }
+        .card { background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(255,255,255,0.1); padding: 2rem; border-radius: 1rem; backdrop-filter: blur(10px); }
+        .card i { color: var(--primary); margin-bottom: 1rem; }
+        .btn { background: var(--success); color: white; padding: 1rem 2rem; border-radius: 0.5rem; text-decoration: none; font-weight: bold; margin-top: 2rem; transition: 0.3s; box-shadow: 0 4px 14px 0 rgba(34, 197, 94, 0.39); }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(34, 197, 94, 0.5); }
+        footer { padding: 2rem; text-align: center; color: #475569; font-size: 0.8rem; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="badge">Wiiset Platform</div>
+    <div class="nav">WIISET PLATFORM</div>
+    
+    <section class="hero">
         <h1>Marco Chiliguano</h1>
-        <p>Automatizando negocios con Inteligencia Artificial y n8n.</p>
-        <p style="font-size: 0.9rem;">Especialista en flujos de trabajo eficientes.</p>
-        
-        <a href="#" class="btn">🚀 Agendar una Consultoría</a>
+        <p class="subtitle">Transformo procesos manuales en flujos automáticos que ahorran tiempo y dinero. Especialista en n8n, IA y integraciones.</p>
+        <a href="https://wa.me/TUNUMERO" class="btn">Solicitar Auditoría Gratis</a>
+    </section>
+
+    <div class="grid">
+        <div class="card">
+            <i data-lucide="zap"></i>
+            <h3>Bots de Telegram/WA</h3>
+            <p>Atención al cliente 24/7 con respuestas inteligentes y confirmación en tiempo real.</p>
+        </div>
+        <div class="card">
+            <i data-lucide="database"></i>
+            <h3>Sincronización</h3>
+            <p>Conecto tus Google Sheets, Calendarios y CRMs para que nunca pierdas un dato.</p>
+        </div>
+        <div class="card">
+            <i data-lucide="cpu"></i>
+            <h3>IA Integrada</h3>
+            <p>Uso de modelos de IA para clasificar correos, resumir textos y tomar decisiones.</p>
+        </div>
     </div>
+
+    <footer>© 2026 Marco Chiliguano - Hecho con ⚡ en Ecuador</footer>
+
+    <script>lucide.createIcons();</script>
 </body>
 </html>
