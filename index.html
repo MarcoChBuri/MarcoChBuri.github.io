@@ -3,52 +3,293 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marco Chiliguano | Automatización Inteligente</title>
+    <title>Wiiset Platform | Automatización, Publicidad y Desarrollo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        :root { --primary: #38bdf8; --success: #22c55e; --dark: #020617; }
-        body { background: radial-gradient(circle at top, #1e293b 0%, #020617 100%); color: white; font-family: 'Inter', sans-serif; margin: 0; line-height: 1.6; }
-        .nav { padding: 1.5rem; text-align: center; font-weight: bold; letter-spacing: 2px; color: var(--primary); }
-        .hero { height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; }
-        h1 { font-size: 3.5rem; margin: 0; background: linear-gradient(to right, #fff, #38bdf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .subtitle { color: #94a3b8; font-size: 1.2rem; max-width: 600px; margin: 1rem 0; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; padding: 4rem 10%; background: rgba(255,255,255,0.02); }
-        .card { background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(255,255,255,0.1); padding: 2rem; border-radius: 1rem; backdrop-filter: blur(10px); }
-        .card i { color: var(--primary); margin-bottom: 1rem; }
-        .btn { background: var(--success); color: white; padding: 1rem 2rem; border-radius: 0.5rem; text-decoration: none; font-weight: bold; margin-top: 2rem; transition: 0.3s; box-shadow: 0 4px 14px 0 rgba(34, 197, 94, 0.39); }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(34, 197, 94, 0.5); }
-        footer { padding: 2rem; text-align: center; color: #475569; font-size: 0.8rem; }
+        :root {
+            --primary: #38bdf8; /* Azul claro */
+            --secondary: #a78bfa; /* Morado suave */
+            --success: #22c55e; /* Verde brillante */
+            --dark-bg: #020617; /* Fondo muy oscuro */
+            --card-bg: rgba(30, 41, 59, 0.6); /* Fondo de tarjeta transparente */
+            --border-color: rgba(255, 255, 255, 0.1);
+            --text-color-light: #f8fafc; /* Texto claro */
+            --text-color-muted: #94a3b8; /* Texto apagado */
+        }
+        body {
+            background: radial-gradient(circle at top, #1e293b 0%, var(--dark-bg) 100%);
+            color: var(--text-color-light);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+        /* Navegación */
+        .navbar {
+            background: var(--dark-bg);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .navbar .logo {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .navbar .nav-links a {
+            color: var(--text-color-light);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        .navbar .nav-links a:hover {
+            color: var(--primary);
+        }
+        /* Héroe Section */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem 5%;
+            position: relative;
+            overflow: hidden; /* Para el fondo de partículas/líneas */
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem); /* Responsive font size */
+            margin: 0;
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+        }
+        .hero .subtitle {
+            color: var(--text-color-muted);
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            max-width: 800px;
+            margin: 1.5rem auto;
+        }
+        .hero .cta-button {
+            background: var(--success);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px 0 rgba(34, 197, 94, 0.39);
+        }
+        .hero .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.5);
+            background: #16a34a; /* Darker green on hover */
+        }
+        /* Secciones Generales */
+        section {
+            padding: 5rem 5%;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+        section h2 {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+        }
+        .section-description {
+            text-align: center;
+            color: var(--text-color-muted);
+            font-size: 1.1rem;
+            margin-bottom: 4rem;
+        }
+        /* Cards de Servicios/Características */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            backdrop-filter: blur(12px); /* Efecto Glassmorphism */
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+        .card i {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+            display: block;
+        }
+        .card h3 {
+            font-size: 1.6rem;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: var(--text-color-light);
+        }
+        .card p {
+            color: var(--text-color-muted);
+            font-size: 1rem;
+        }
+
+        /* Sección de Videos */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .video-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(12px);
+            transition: transform 0.3s ease;
+        }
+        .video-item:hover {
+            transform: scale(1.03);
+        }
+        .video-item h4 {
+            padding: 1rem 1.5rem;
+            margin: 0;
+            font-size: 1.2rem;
+            color: var(--primary);
+            background: rgba(0,0,0,0.2);
+        }
+        .video-item iframe {
+            width: 100%;
+            height: 200px; /* Altura de los videos */
+            display: block;
+            border: none;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 5%;
+            text-align: center;
+            color: #475569;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 4rem;
+        }
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar .nav-links { display: none; } /* O podrías hacer un botón de menú hamburguesa */
+            .navbar { justify-content: center; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero .subtitle { font-size: 1rem; }
+            section { padding: 3rem 5%; }
+            section h2 { font-size: 2rem; }
+            .grid, .video-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
-    <div class="nav">WIISET PLATFORM</div>
-    
-    <section class="hero">
+    <nav class="navbar">
+        <a href="#hero" class="logo">WIISET PLATFORM</a>
+        <div class="nav-links">
+            <a href="#servicios">Servicios</a>
+            <a href="#casos">Casos de Éxito</a>
+            <a href="#videos">Videos Explicativos</a>
+            <a href="#contacto">Contacto</a>
+        </div>
+    </nav>
+
+    <section id="hero" class="hero">
         <h1>Marco Chiliguano</h1>
-        <p class="subtitle">Transformo procesos manuales en flujos automáticos que ahorran tiempo y dinero. Especialista en n8n, IA y integraciones.</p>
-        <a href="https://wa.me/TUNUMERO" class="btn">Solicitar Auditoría Gratis</a>
+        <p class="subtitle">Tu aliado estratégico para automatizar procesos, potenciar tu publicidad y desarrollar soluciones inteligentes.</p>
+        <p class="subtitle" style="font-size:1.1rem; max-width: 700px;">Transforma tareas repetitivas en sistemas eficientes que te ahorran tiempo y aumentan tus resultados.</p>
+        <a href="https://wa.me/593987654321" target="_blank" class="cta-button">🚀 Solicitar Auditoría Gratuita</a>
     </section>
 
-    <div class="grid">
-        <div class="card">
-            <i data-lucide="zap"></i>
-            <h3>Bots de Telegram/WA</h3>
-            <p>Atención al cliente 24/7 con respuestas inteligentes y confirmación en tiempo real.</p>
+    <section id="servicios">
+        <h2>¿Cómo transformamos tu negocio?</h2>
+        <p class="section-description">Entiende de forma sencilla los pilares de la automatización que impulsarán tu crecimiento.</p>
+        <div class="grid">
+            <div class="card">
+                <i data-lucide="zap"></i>
+                <h3>Automatización de Procesos</h3>
+                <p>Digitalizamos y optimizamos tus flujos de trabajo con herramientas como n8n y I.A. para que tu equipo se enfoque en lo que realmente importa.</p>
+            </div>
+            <div class="card">
+                <i data-lucide="megaphone"></i>
+                <h3>Publicidad Inteligente</h3>
+                <p>Automatizamos la gestión de campañas, segmentación de clientes y análisis de resultados para maximizar tu retorno de inversión en redes y otros medios.</p>
+            </div>
+            <div class="card">
+                <i data-lucide="code"></i>
+                <h3>Desarrollo de Soluciones</h3>
+                <p>Creamos herramientas personalizadas, integraciones de sistemas y dashboards interactivos para darte el control total de tu información.</p>
+            </div>
+            <div class="card">
+                <i data-lucide="bot"></i>
+                <h3>Asistentes Virtuales (Bots)</h3>
+                <p>Implementamos chatbots y asistentes de voz para atención al cliente 24/7, agendamiento de citas y soporte automatizado en Telegram y WhatsApp.</p>
+            </div>
         </div>
-        <div class="card">
-            <i data-lucide="database"></i>
-            <h3>Sincronización</h3>
-            <p>Conecto tus Google Sheets, Calendarios y CRMs para que nunca pierdas un dato.</p>
-        </div>
-        <div class="card">
-            <i data-lucide="cpu"></i>
-            <h3>IA Integrada</h3>
-            <p>Uso de modelos de IA para clasificar correos, resumir textos y tomar decisiones.</p>
-        </div>
-    </div>
+    </section>
 
-    <footer>© 2026 Marco Chiliguano - Hecho con ⚡ en Ecuador</footer>
+    <section id="videos">
+        <h2>Casos Prácticos & Demos</h2>
+        <p class="section-description">Mira cómo la automatización funciona en la vida real. Videos cortos para entender el impacto.</p>
+        <div class="video-grid">
+            <div class="video-item">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <h4>Automatización de Citas en Telegram</h4>
+            </div>
+            <div class="video-item">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <h4>Publicidad Segmentada con I.A.</h4>
+            </div>
+            <div class="video-item">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <h4>Conectando Google Sheets y Calendarios</h4>
+            </div>
+            </div>
+    </section>
 
-    <script>lucide.createIcons();</script>
+    <section id="contacto" style="text-align: center;">
+        <h2>Empecemos a transformar tu negocio</h2>
+        <p class="section-description" style="margin-bottom: 2rem;">¿Listo para llevar tu eficiencia al siguiente nivel? Contáctame para una consultoría sin compromiso.</p>
+        <a href="https://wa.me/593987654321" target="_blank" class="cta-button">Conversemos por WhatsApp</a>
+        <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--text-color-muted);">También puedes enviar un correo a <a href="mailto:tu.correo@tudominio.com" style="color:var(--primary);">tu.correo@tudominio.com</a></p>
+    </section>
+
+
+    <footer>
+        © <span id="currentYear"></span> Wiiset Platform por Marco Chiliguano. Todos los derechos reservados.<br>
+        Hecho con ⚡ desde Ecuador.
+    </footer>
+
+    <script>
+        lucide.createIcons(); // Inicializa los iconos
+        document.getElementById('currentYear').textContent = new Date().getFullYear(); // Año actual
+    </script>
 </body>
 </html>
